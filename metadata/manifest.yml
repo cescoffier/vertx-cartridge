@@ -1,0 +1,68 @@
+---
+Name: vertx3
+Cartridge-Short-Name: VERTX
+Display-Name: Vert.x 3
+Description: "Vert.x is a lightweight, high performance application platform for the JVM that's designed for modern mobile, web, and enterprise applications."
+Version: '3.0.0'
+License: EPL 1.0
+License-Url: http://www.eclipse.org/legal/epl-v10.html
+Vendor: Eclipse Foundation
+Cartridge-Version: 0.0.1
+Cartridge-Vendor: Red Hat
+Source-Url: https://github.com/vert-x3/openshift-cartridge.git
+Categories:
+  - web_framework
+  - community
+  - java
+  - polyglot
+Website: http://vertx.io
+Help-Topics:
+  "Developer Center": http://vertx.io
+Publishes:
+  publish-http-url:
+    Type: "NET_TCP:httpd-proxy-info"
+  publish-gear-endpoint:
+    Type: "NET_TCP:gear-endpoint-info"
+  publish-vertx-cluster:
+    Type: "NET_TCP:vertx-cluster-info"
+Subscribes:
+  set-env:
+    Type: ENV:*
+    Required: false
+  set-vertx-cluster:
+    Type: "NET_TCP:vertx-cluster-info"
+Scaling:
+  Min: 1
+  Max: -1
+Endpoints:
+  - Private-IP-Name:   IP
+    Private-Port-Name: PORT
+    Private-Port:      8080
+    Public-Port-Name:  PROXY_PORT
+    Protocols: [http, ws]
+    Mappings:
+      - Frontend:      ''
+        Backend:       ''
+        Options:
+          websocket: true
+ - Private-IP-Name: SSL_IP
+   Private-Port-Name: SSL_PORT
+   Private-Port: 8443
+   Public-Port-Name: SSL_PROXY_PORT
+   Protocols: [https, ws]
+   Options:
+        ssl_to_gear: true
+        websocket: true
+  - Private-IP-Name:   IP
+    Private-Port-Name: HAZELCAST_PORT
+    Private-Port:      5701
+    Public-Port-Name:  HAZELCAST_PROXY_PORT
+  - Private-IP-Name:   IP
+    Private-Port-Name: CLUSTER_PORT
+    Private-Port:      9123
+    Public-Port-Name:  CLUSTER_PROXY_PORT
+Additional-Control-Actions:
+    - threaddump
+Install-Build-Required: false
+Metrics:
+- uptime
