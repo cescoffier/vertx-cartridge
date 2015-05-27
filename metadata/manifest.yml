@@ -63,5 +63,3 @@ Endpoints:
 Additional-Control-Actions:
     - threaddump
 Install-Build-Required: false
-Metrics:
-- uptime
