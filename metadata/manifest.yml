@@ -1,15 +1,14 @@
----
 Name: vertx3
 Cartridge-Short-Name: VERTX
 Display-Name: Vert.x 3
-Description: "Vert.x is a lightweight, high performance application platform for the JVM that's designed for modern mobile, web, and enterprise applications."
+Description: "A cartridge for vert.x 3 appliation"
 Version: '3.0.0'
 License: EPL 1.0
 License-Url: http://www.eclipse.org/legal/epl-v10.html
 Vendor: Eclipse Foundation
 Cartridge-Version: 0.0.1
 Cartridge-Vendor: Red Hat
-Source-Url: https://github.com/cescoffier/vertx-cartridge/archive/master.zip
+Source-Url: git@github.com:cescoffier/vertx-cartridge.git
 Categories:
   - web_framework
   - community
