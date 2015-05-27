@@ -8,6 +8,8 @@ export PATH=$JAVA_HOME/bin:$PATH
 export LOG="$OPENSHIFT_VERTX_LOG_DIR"out.log
 export RUNNING_PID=$OPENSHIFT_REPO_DIR/RUNNING_PID
 
+mkdir -p ${OPENSHIFT_VERTX_LOG_DIR}
+
 # Check whether the application is running.
 # The check is pretty simple: open a running pid file and check that the process
 # is alive.
