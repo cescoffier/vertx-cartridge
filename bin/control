@@ -64,7 +64,7 @@ function stop {
 }
 
 function setup_hazelcast {
-  if [ -z "$OPENSHIFT_VERTX_HAZELCAST_CLUSTER" ]; then
+  if [ -z ${OPENSHIFT_VERTX_HAZELCAST_CLUSTER:-} ]; then
     OPENSHIFT_VERTX_HAZELCAST_CLUSTER="${OPENSHIFT_VERTX_IP}:${OPENSHIFT_VERTX_HAZELCAST_PORT}"
   fi
 
