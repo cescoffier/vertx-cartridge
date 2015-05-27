@@ -16,8 +16,8 @@ mkdir -p $OPENSHIFT_VERTX_DIR/conf
 shopt -s dotglob
 
 # Copy shared configuration
-if [ -d "$OPENSHIFT_VERTX_DIR/versions/shared/conf" ]; then
-  cp -Lr $OPENSHIFT_VERTX_DIR/versions/shared/conf/* $OPENSHIFT_VERTX_DIR/conf
+if [ -d "$OPENSHIFT_VERTX_DIR/urs/shared/conf" ]; then
+  cp -Lr $OPENSHIFT_VERTX_DIR/urs/shared/conf/* $OPENSHIFT_VERTX_DIR/conf
 fi
 
 pwd
