@@ -14,6 +14,7 @@ esac
 cd $OPENSHIFT_VERTX_DIR
 
 if [ ! -d $OPENSHIFT_VERTX_DIR/jdk1.8.0_31 ]; then
+    echo "Downloading Java 8"
     wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u31-b13/jdk-8u31-linux-x64.tar.gz
     tar -zxvf jdk-8u31-linux-x64.tar.gz
     mv $OPENSHIFT_VERTX_DIR/jdk1.8.0_31 $OPENSHIFT_VERTX_DIR/java
@@ -26,6 +27,7 @@ fi
 # Update cluster.xml
 ##
 OPENSHIFT_VERTX_PROXY_IP=$(ping -c 1 ${OPENSHIFT_GEAR_DNS} | awk '{ print $3 ; exit }' | sed 's/(//g' | sed 's/)//g')
+echo "Proxy Ip : $OPENSHIFT_VERTX_PROXY_IP"
 
 if [ -z "$OPENSHIFT_VERTX_CLUSTER_PROXY_PORT" ]; then
   OPENSHIFT_VERTX_CLUSTER_PROXY_PORT=7600
