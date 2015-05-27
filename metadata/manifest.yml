@@ -9,7 +9,7 @@ License-Url: http://www.eclipse.org/legal/epl-v10.html
 Vendor: Eclipse Foundation
 Cartridge-Version: 0.0.1
 Cartridge-Vendor: Red Hat
-Source-Url: https://github.com/vert-x3/openshift-cartridge.git
+Source-Url: https://github.com/cescoffier/vertx-cartridge/archive/master.zip
 Categories:
   - web_framework
   - community
