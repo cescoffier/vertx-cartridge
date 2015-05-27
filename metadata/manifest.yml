@@ -1,7 +1,7 @@
-Name: vertx
+Name: vertx3
 Cartridge-Short-Name: VERTX
 Display-Name: Vert.x 3
-Description: "A cartridge for vert.x 3 appliation"
+Description: "A cartridge for vert.x 3 application"
 Version: '3.0.0'
 License: EPL 1.0
 License-Url: http://www.eclipse.org/legal/epl-v10.html
@@ -15,8 +15,6 @@ Categories:
   - java
   - polyglot
 Website: http://vertx.io
-Help-Topics:
-  "Developer Center": http://vertx.io
 Publishes:
   publish-http-url:
     Type: "NET_TCP:httpd-proxy-info"
@@ -42,16 +40,13 @@ Endpoints:
     Mappings:
       - Frontend:      ''
         Backend:       ''
-        Options:
-          websocket: true
- - Private-IP-Name: SSL_IP
-   Private-Port-Name: SSL_PORT
-   Private-Port: 8443
-   Public-Port-Name: SSL_PROXY_PORT
-   Protocols: [https, ws]
-   Options:
-        ssl_to_gear: true
-        websocket: true
+        Options: {websocket: true}
+  - Private-IP-Name: SSL_IP
+    Private-Port-Name: SSL_PORT
+    Private-Port: 8443
+    Public-Port-Name: SSL_PROXY_PORT
+    Protocols: [https, ws]
+    Options: { ssl_to_gear: true, websocket: true }
   - Private-IP-Name:   IP
     Private-Port-Name: HAZELCAST_PORT
     Private-Port:      5701
