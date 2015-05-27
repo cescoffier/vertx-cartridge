@@ -35,13 +35,6 @@ function start {
   envf="$OPENSHIFT_REPO_DIR/configuration/vertx.env"
   [ -f "$envf" ]  &&  source "$envf"
 
-  # Setup max heap
-  if [ -z "$JVM_HEAP_RATIO" ]; then
-    JVM_HEAP_RATIO=0.5
-  fi
-  max_memory_mb=${OPENSHIFT_GEAR_MEMORY_MB}
-  max_heap=$( echo "$max_memory_mb * $JVM_HEAP_RATIO" | bc | awk '{print int($1+0.5)}')
-  VERTX_OPTS="$VERTX_OPTS -Xmx${max_heap}m -XX:MaxPermSize=${max_permgen}m"
   export VERTX_OPTS
 
   # Setup ports and addresses
