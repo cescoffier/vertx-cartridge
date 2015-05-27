@@ -5,7 +5,7 @@ source $OPENSHIFT_CARTRIDGE_SDK_BASH
 export JAVA_HOME=$OPENSHIFT_VERTX_DIR/java
 export PATH=$JAVA_HOME/bin:$PATH
 
-export LOG=$OPENSHIFT_VERTX_LOG_DIR/out.log
+export LOG=$OPENSHIFT_VERTX_LOG_DIRout.log
 export RUNNING_PID=$OPENSHIFT_REPO_DIR/RUNNING_PID
 
 # Check whether the application is running.
