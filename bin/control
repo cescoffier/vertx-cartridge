@@ -1,7 +1,6 @@
 #!/bin/bash -eu
 
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
-source $OPENSHIFT_MOCK_DIR/mock.conf
 
 export JAVA_HOME=$OPENSHIFT_DATA_DIR/jdk1.8.0_31
 export PATH=$JAVA_HOME/bin:$PATH
