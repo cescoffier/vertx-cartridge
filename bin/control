@@ -2,8 +2,6 @@
 
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
-version=${OPENSHIFT_VERTX_VERSION}
-
 export JAVA_HOME=$OPENSHIFT_VERTX_DIR/java
 export PATH=$JAVA_HOME/bin:$PATH
 
@@ -73,12 +71,8 @@ function stop() {
 
 function setup_hazelcast {
   # TODO: Figure out a better way to do this
-  if [ -f "$OPENSHIFT_VERTX_DIR/versions/shared/conf/cluster.xml" ]; then
-    cp $OPENSHIFT_VERTX_DIR/versions/shared/conf/cluster.xml $OPENSHIFT_VERTX_DIR/conf/
-  fi
-
-  if [ -f "$OPENSHIFT_VERTX_DIR/versions/$version/conf/cluster.xml" ]; then
-    cp $OPENSHIFT_VERTX_DIR/versions/$version/conf/cluster.xml $OPENSHIFT_VERTX_DIR/conf/
+  if [ -f "$OPENSHIFT_VERTX_DIR/usr/shared/conf/cluster.xml" ]; then
+    cp $OPENSHIFT_VERTX_DIR/usr/shared/conf/cluster.xml $OPENSHIFT_VERTX_DIR/conf/
   fi
 
   if [ -z "$OPENSHIFT_VERTX_HAZELCAST_CLUSTER" ]; then
@@ -158,7 +152,7 @@ function tidy() {
 }
 
 function threaddump() {
-  echo "Thread dump for Vert.x $version cartridge"
+  echo "Thread dump for Vert.x cartridge"
 
   if ! isrunning; then
     echo "Application is stopped"
