@@ -55,7 +55,7 @@ function start {
   #Add shared conf into classpath.
   export CLASSPATH=$OPENSHIFT_VERTX_DIR/conf
 
-  nohup java $VERTX_OPTS -jar $OPENSHIFT_REPO_DIR/application/*.jar $vertx_cluster > $LOG 2>&1 &
+  nohup java $VERTX_OPTS -jar $OPENSHIFT_REPO_DIR/application/*.jar $vertx_cluster $RUN_ARGS > $LOG 2>&1 &
   echo $! > $RUNNING_PID
 }
 
