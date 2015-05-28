@@ -2,7 +2,7 @@ Name: vertx
 Cartridge-Short-Name: VERTX
 Display-Name: Vert.x 3
 Description: "Vert.x is a lightweight, high performance application platform for the JVM that's designed for modern mobile, web, and enterprise applications."
-Version: '3.0.0'
+Version: '3.0'
 License: ASL 2.0
 Vendor: Vert.x
 Cartridge-Version: 0.0.1
