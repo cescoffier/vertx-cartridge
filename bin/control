@@ -103,6 +103,11 @@ function start() {
   #  Source environment if it exists.
   [ -f "$envf" ]  &&  source "$envf"
 
+  export VERTX_OPTS
+
+  # Setup ports and addresses
+  VERTX_OPTS="$VERTX_OPTS -Dhttp.port=$OPENSHIFT_VERTX_PORT -Dhttp.address=$OPENSHIFT_VERTX_IP 
+
   # Setup clustering
   if [ "$OPENSHIFT_VERTX_HAZELCAST_PROXY_PORT" ]; then
     setup_hazelcast
@@ -124,7 +129,7 @@ function start() {
 
     nohup java $VERTX_OPTS -jar $OPENSHIFT_REPO_DIR/application/*.jar $vertx_cluster $RUN_ARGS > $LOG 2>&1 &
     echo $! > ${VERTX_PID_FILE}
-    
+
   popd > /dev/null
 }
 
