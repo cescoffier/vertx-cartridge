@@ -1,20 +1,22 @@
-Name: vertx3
+Name: vertx
 Cartridge-Short-Name: VERTX
-Display-Name: Vert.x 3
-Description: "A cartridge for vert.x 3 application"
-Version: '3.0.0'
+Display-Name: Vert.x 2.1
+Description: "Vert.x is a lightweight, high performance application platform for the JVM that's designed for modern mobile, web, and enterprise applications."
+Version: '2.1'
 License: EPL 1.0
 License-Url: http://www.eclipse.org/legal/epl-v10.html
 Vendor: Eclipse Foundation
-Cartridge-Version: 0.0.1
-Cartridge-Vendor: vertx
-Source-Url: https://github.com/cescoffier/vertx-cartridge.git
+Cartridge-Version: 0.0.3
+Cartridge-Vendor: jboss
+Source-Url: https://github.com/vert-x/openshift-cartridge.git
 Categories:
   - web_framework
   - community
   - java
   - polyglot
 Website: http://vertx.io
+Help-Topics:
+  "Developer Center": http://vertx.io
 Publishes:
   publish-http-url:
     Type: "NET_TCP:httpd-proxy-info"
@@ -51,5 +53,3 @@ Endpoints:
 Additional-Control-Actions:
     - threaddump
 Install-Build-Required: false
-Metrics:
-    - enabled

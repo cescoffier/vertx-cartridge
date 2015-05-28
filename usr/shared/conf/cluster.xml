@@ -12,8 +12,8 @@
     <property name="hazelcast.socket.client.bind">false</property>
   </properties>
   <group>
-    <name>vertx</name>
-    <password>vertx</password>
+    <name>dev</name>
+    <password>dev-pass</password>
   </group>
   <management-center enabled="false">http://localhost:8080/mancenter</management-center>
   <network>
@@ -116,6 +116,7 @@
       Values of these entries might be different for that same key.
       Which value should be set for the key? Conflict is resolved by
       the policy set here. Default policy is PutIfAbsentMapMergePolicy
+
       There are built-in merge policies such as
       com.hazelcast.map.merge.PassThroughMergePolicy; entry will be added if there is no existing entry for the key.
       com.hazelcast.map.merge.PutIfAbsentMapMergePolicy ; entry will be added if the merging entry doesn't exist in the cluster.

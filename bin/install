@@ -1,33 +1,5 @@
 #!/bin/bash -e
 
-# Mock cartridge for testing and verifying node platform code. This is
-# not an example of how to write a well-formed cartridge.
-
-case "$1" in
-  -v|--version)
-    version="$2"
-esac
-
-##
-# Provision files
-##
-mkdir -p $OPENSHIFT_VERTX_DIR/conf
-
-shopt -s dotglob
-
-# Copy shared configuration
-if [ -d "$OPENSHIFT_VERTX_DIR/usr/shared" ]; then
-    echo "copy shared configuration"
-    cp -Lr $OPENSHIFT_VERTX_DIR/usr/shared/* $OPENSHIFT_VERTX_DIR/conf
-fi
-
-pwd
-tree
-
-##
-# Install Java 8
-##
-
 cd $OPENSHIFT_VERTX_DIR
 pwd
 
@@ -39,11 +11,14 @@ if [ ! -d $OPENSHIFT_VERTX_DIR/jdk1.8.0_31 ]; then
     rm -f jdk-8u31-linux-x64.tar.gz
 fi
 
-# JAVA_HOME and PATH are set in hooks according to these paths
+mkdir -p $OPENSHIFT_VERTX_DIR/conf
+shopt -s dotglob
 
-##
-# Update cluster.xml
-##
+# Copy shared configuration
+if [ -d "$OPENSHIFT_VERTX_DIR/usr/shared/conf" ]; then
+  cp -Lr $OPENSHIFT_VERTX_DIR/usr/shared/conf/* $OPENSHIFT_VERTX_DIR/conf
+fi
+
 OPENSHIFT_VERTX_PROXY_IP=$(ping -c 1 ${OPENSHIFT_GEAR_DNS} | awk '{ print $3 ; exit }' | sed 's/(//g' | sed 's/)//g')
 
 if [ -z "$OPENSHIFT_VERTX_CLUSTER_PROXY_PORT" ]; then
@@ -64,5 +39,3 @@ pushd $OPENSHIFT_VERTX_DIR > /dev/null
 
     sed -i -e "s|\${env.OPENSHIFT_VERTX_LOG_DIR}|${OPENSHIFT_VERTX_LOG_DIR}|g" ./conf/logging.properties
 popd > /dev/null
-
-exit 0
