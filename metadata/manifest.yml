@@ -36,11 +36,10 @@ Endpoints:
     Private-Port-Name: PORT
     Private-Port:      8080
     Public-Port-Name:  PROXY_PORT
-    Protocols: [http, ws]
     Mappings:
       - Frontend:      ''
         Backend:       ''
-        Options: {websocket: true}
+        Options:       { websocket: 1 }
   - Private-IP-Name: SSL_IP
     Private-Port-Name: SSL_PORT
     Private-Port: 8443
