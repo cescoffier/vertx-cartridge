@@ -8,7 +8,7 @@ License-Url: http://www.eclipse.org/legal/epl-v10.html
 Vendor: Eclipse Foundation
 Cartridge-Version: 0.0.1
 Cartridge-Vendor: vertx
-Source-Url: git://github.com/cescoffier/vertx-cartridge
+Source-Url: https://github.com/cescoffier/vertx-cartridge.git
 Categories:
   - web_framework
   - community

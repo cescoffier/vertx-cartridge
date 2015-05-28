@@ -84,7 +84,7 @@ function setup_hazelcast {
 
 
 function restart {
-  echo "Restarting Vert.x application"
+  client_result "Restarting Vert.x application"
   stop
   start
 }
