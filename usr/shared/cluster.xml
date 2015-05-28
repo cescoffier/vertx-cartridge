@@ -12,8 +12,8 @@
     <property name="hazelcast.socket.client.bind">false</property>
   </properties>
   <group>
-    <name>dev</name>
-    <password>dev-pass</password>
+    <name>vertx</name>
+    <password>vertx</password>
   </group>
   <management-center enabled="false">http://localhost:8080/mancenter</management-center>
   <network>
@@ -27,18 +27,6 @@
       <tcp-ip enabled="true">
         <members>${env.OPENSHIFT_VERTX_HAZELCAST_CLUSTER}</members>
       </tcp-ip>
-      <aws enabled="false">
-        <access-key>my-access-key</access-key>
-        <secret-key>my-secret-key</secret-key>
-        <!--optional, default is us-east-1 -->
-        <region>us-west-1</region>
-        <!--optional, default is ec2.amazonaws.com. If set, region shouldn't be set as it will override this property -->
-        <host-header>ec2.amazonaws.com</host-header>
-        <!-- optional, only instances belonging to this group will be discovered, default will try all running instances -->
-        <security-group-name>hazelcast-sg</security-group-name>
-        <tag-key>type</tag-key>
-        <tag-value>hz-nodes</tag-value>
-      </aws>
     </join>
     <symmetric-encryption enabled="false">
       <!--
