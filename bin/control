@@ -64,12 +64,17 @@ function start {
   #Add shared conf into classpath.
   export CLASSPATH=$OPENSHIFT_VERTX_DIR/conf
 
+  client_message "PWD $PWD"
+  client_message "OPTS $VERTX_OPTS"
+  client_message "cluster $vertx_cluster"
+  client_message "ARGS $RUN_ARGS"
+
   nohup java $VERTX_OPTS -jar $OPENSHIFT_REPO_DIR/application/*.jar $vertx_cluster $RUN_ARGS > $LOG 2>&1 &
   echo $! > $RUNNING_PID
 }
 
 function stop {
-  echo "Stopping Vert.x application"
+  client_message "Stopping Vert.x application"
   if isrunning; then
     kill `cat $RUNNING_PID`
     rm $RUNNING_PID
