@@ -106,7 +106,7 @@ function start() {
   export VERTX_OPTS
 
   # Setup ports and addresses
-  VERTX_OPTS="$VERTX_OPTS -Dhttp.port=$OPENSHIFT_VERTX_PORT -Dhttp.address=$OPENSHIFT_VERTX_IP 
+  VERTX_OPTS="$VERTX_OPTS -Dhttp.port=$OPENSHIFT_VERTX_PORT -Dhttp.address=$OPENSHIFT_VERTX_IP" 
 
   # Setup clustering
   if [ "$OPENSHIFT_VERTX_HAZELCAST_PROXY_PORT" ]; then
