@@ -45,7 +45,6 @@ fi
 # Update cluster.xml
 ##
 OPENSHIFT_VERTX_PROXY_IP=$(ping -c 1 ${OPENSHIFT_GEAR_DNS} | awk '{ print $3 ; exit }' | sed 's/(//g' | sed 's/)//g')
-echo "Proxy Ip : $OPENSHIFT_VERTX_PROXY_IP"
 
 if [ -z "$OPENSHIFT_VERTX_CLUSTER_PROXY_PORT" ]; then
   OPENSHIFT_VERTX_CLUSTER_PROXY_PORT=7600
@@ -56,17 +55,14 @@ if [ -z "$OPENSHIFT_VERTX_HAZELCAST_CLUSTER" ]; then
 fi
 
 pushd $OPENSHIFT_VERTX_DIR > /dev/null
-    # sed -i -e "s/\${env.OPENSHIFT_VERTX_HAZELCAST_PROXY_PORT}/${OPENSHIFT_VERTX_HAZELCAST_PROXY_PORT}/g" \
-    #        -e "s/\${env.OPENSHIFT_VERTX_HAZELCAST_PORT}/${OPENSHIFT_VERTX_HAZELCAST_PORT}/g" \
-    #        -e "s/\${env.OPENSHIFT_VERTX_PROXY_IP}/${OPENSHIFT_VERTX_PROXY_IP}/g" \
-    #        -e "s/\${env.OPENSHIFT_VERTX_IP}/${OPENSHIFT_VERTX_IP}/g" \
-    #        -e "s/\${env.OPENSHIFT_VERTX_HAZELCAST_CLUSTER}/${OPENSHIFT_VERTX_HAZELCAST_CLUSTER}/g" \
-    #        ./conf/cluster.xml
-
-    sed -i -e "s/\${CLUSTER_IP_ADDRESS}/`echo ${OPENSHIFT_INTERNAL_IP}`/g" ./conf/cluster.xml
+    sed -i -e "s/\${env.OPENSHIFT_VERTX_HAZELCAST_PROXY_PORT}/${OPENSHIFT_VERTX_HAZELCAST_PROXY_PORT}/g" \
+           -e "s/\${env.OPENSHIFT_VERTX_HAZELCAST_PORT}/${OPENSHIFT_VERTX_HAZELCAST_PORT}/g" \
+           -e "s/\${env.OPENSHIFT_VERTX_PROXY_IP}/${OPENSHIFT_VERTX_PROXY_IP}/g" \
+           -e "s/\${env.OPENSHIFT_VERTX_IP}/${OPENSHIFT_VERTX_IP}/g" \
+           -e "s/\${env.OPENSHIFT_VERTX_HAZELCAST_CLUSTER}/${OPENSHIFT_VERTX_HAZELCAST_CLUSTER}/g" \
+           ./conf/cluster.xml
 
     sed -i -e "s|\${env.OPENSHIFT_VERTX_LOG_DIR}|${OPENSHIFT_VERTX_LOG_DIR}|g" ./conf/logging.properties
 popd > /dev/null
-
 
 exit 0
