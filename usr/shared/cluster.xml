@@ -7,7 +7,7 @@
     <property name="hazelcast.rest.enabled">false</property>
     <property name="hazelcast.wait.seconds.before.join">0</property>
     <property name="hazelcast.logging.type">jdk</property>
-    <property name="hazelcast.local.localAddress">${env.OPENSHIFT_VERTX_IP}</property>
+    <property name="hazelcast.local.localAddress">${env.CLUSTER_IP_ADDRESS}</property>
     <property name="hazelcast.socket.server.bind.any">false</property>
     <property name="hazelcast.socket.client.bind">false</property>
   </properties>
@@ -16,20 +16,21 @@
     <password>vertx</password>
   </group>
   <network>
-    <public-address>${env.OPENSHIFT_VERTX_PROXY_IP}:${env.OPENSHIFT_VERTX_HAZELCAST_PROXY_PORT}</public-address>
-    <port auto-increment="false" port-count="100">${env.OPENSHIFT_VERTX_HAZELCAST_PORT}</port>
+    <!-- <public-address>${env.OPENSHIFT_VERTX_PROXY_IP}:${env.OPENSHIFT_VERTX_HAZELCAST_PROXY_PORT}</public-address> -->
+    <!-- <port auto-increment="false" port-count="100">${env.OPENSHIFT_VERTX_HAZELCAST_PORT}</port> -->
     <join>
-      <multicast enabled="false">
+      <!-- <multicast enabled="false">
         <multicast-group>224.2.2.3</multicast-group>
         <multicast-port>54327</multicast-port>
-      </multicast>
+      </multicast> -->
       <tcp-ip enabled="true">
-        <members>${env.OPENSHIFT_VERTX_HAZELCAST_CLUSTER}</members>
+        <!-- <members>${env.OPENSHIFT_VERTX_HAZELCAST_CLUSTER}</members> -->
+        <interface>${CLUSTER_IP_ADDRESS}</interface>
       </tcp-ip>
     </join>
-    <interfaces enabled="true">
+    <!-- <interfaces enabled="true">
      <interface>${env.OPENSHIFT_VERTX_IP}</interface>
-   </interfaces>
+   </interfaces> -->
     <symmetric-encryption enabled="false">
       <!--
          encryption algorithm such as
