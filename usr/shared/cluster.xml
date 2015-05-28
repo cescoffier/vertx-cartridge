@@ -27,6 +27,9 @@
         <members>${env.OPENSHIFT_VERTX_HAZELCAST_CLUSTER}</members>
       </tcp-ip>
     </join>
+    <interfaces enabled="true">
+     <interface>${env.OPENSHIFT_VERTX_IP}</interface>
+   </interfaces>
     <symmetric-encryption enabled="false">
       <!--
          encryption algorithm such as
