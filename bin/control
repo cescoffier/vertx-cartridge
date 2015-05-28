@@ -45,7 +45,6 @@ function start {
   # Setup clustering
   vertx_cluster=""
   client_message "Configuring Hazelcast : ${OPENSHIFT_VERTX_HAZELCAST_PROXY_PORT}"
-  if [ -z ${OPENSHIFT_VERTX_HAZELCAST_PROXY_PORT} ]; then
       client_message "Configuring Hazelcast"
     # setup_hazelcast
         OPENSHIFT_VERTX_PROXY_IP=$(ping -c 1 ${OPENSHIFT_GEAR_DNS} | awk '{ print $3 ; exit }' | sed 's/(//g' | sed 's/)//g')
@@ -61,7 +60,6 @@ function start {
         VERTX_OPTS="$VERTX_OPTS -Dvertx.cluster.public.host=${OPENSHIFT_VERTX_PROXY_IP} -Dvertx.cluster.public.port=${OPENSHIFT_VERTX_CLUSTER_PROXY_PORT}"
 
         vertx_cluster="-cluster -cluster-port $OPENSHIFT_VERTX_CLUSTER_PORT -cluster-host $OPENSHIFT_VERTX_IP"
-  fi
 
   #Add shared conf into classpath.
   export CLASSPATH=$OPENSHIFT_VERTX_DIR/conf
