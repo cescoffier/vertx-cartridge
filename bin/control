@@ -39,7 +39,7 @@ function setup_hazelcast {
     cp $OPENSHIFT_VERTX_DIR/usr/shared/conf/cluster.xml $OPENSHIFT_VERTX_DIR/conf/
   fi
 
-  if [ -f "${OPENSHIFT_REPO_DIR}/configuration/cluster.xml"]; then
+  if [ -f "${OPENSHIFT_REPO_DIR}/configuration/cluster.xml" ]; then
       cp ${OPENSHIFT_REPO_DIR}/configuration/cluster.xml $OPENSHIFT_VERTX_DIR/conf/
   fi
 
