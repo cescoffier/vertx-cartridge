@@ -41,6 +41,7 @@ function setup_hazelcast {
 
   if [ -f "${OPENSHIFT_REPO_DIR}/configuration/cluster.xml"]; then
       cp ${OPENSHIFT_REPO_DIR}/configuration/cluster.xml $OPENSHIFT_VERTX_DIR/conf/
+  fi
 
   if [ -z "$OPENSHIFT_VERTX_HAZELCAST_CLUSTER" ]; then
     OPENSHIFT_VERTX_HAZELCAST_CLUSTER="${OPENSHIFT_VERTX_IP}:${OPENSHIFT_VERTX_HAZELCAST_PORT}"
