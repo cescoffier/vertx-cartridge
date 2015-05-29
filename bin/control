@@ -2,7 +2,8 @@
 
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
-export JAVA_HOME=$OPENSHIFT_VERTX_DIR/java
+#export JAVA_HOME=$OPENSHIFT_VERTX_DIR/java
+export JAVA_HOME=/usr/lib/jvm/jre-1.8.0
 export PATH=$JAVA_HOME/bin:$PATH
 
 export LOG="$OPENSHIFT_VERTX_LOG_DIR"out.log
@@ -106,7 +107,7 @@ function start() {
   export VERTX_OPTS
 
   # Setup ports and addresses
-  VERTX_OPTS="$VERTX_OPTS -Dhttp.port=$OPENSHIFT_VERTX_PORT -Dhttp.address=$OPENSHIFT_VERTX_IP" 
+  VERTX_OPTS="$VERTX_OPTS -Dhttp.port=$OPENSHIFT_VERTX_PORT -Dhttp.address=$OPENSHIFT_VERTX_IP"
 
   # Setup clustering
   if [ "$OPENSHIFT_VERTX_HAZELCAST_PROXY_PORT" ]; then

@@ -5,11 +5,11 @@ pwd
 
 if [ ! -d $OPENSHIFT_VERTX_DIR/jdk1.8.0_31 ]; then
     echo "Downloading Java 8"
-    wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u31-b13/jdk-8u31-linux-x64.tar.gz
-    #cp /tmp/jdk-8u31-linux-x64.tar.gz .
-    tar -zxvf jdk-8u31-linux-x64.tar.gz
-    mv $OPENSHIFT_VERTX_DIR/jdk1.8.0_31 $OPENSHIFT_VERTX_DIR/java
-    rm -f jdk-8u31-linux-x64.tar.gz
+    # wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u31-b13/jdk-8u31-linux-x64.tar.gz
+    #tar -zxvf jdk-8u31-linux-x64.tar.gz
+    #mv $OPENSHIFT_VERTX_DIR/jdk1.8.0_31 $OPENSHIFT_VERTX_DIR/java
+    #rm -f jdk-8u31-linux-x64.tar.gz
+    echo "Gonna use /usr/lib/jvm/jre-1.8.0"
 fi
 
 mkdir -p $OPENSHIFT_VERTX_DIR/conf
